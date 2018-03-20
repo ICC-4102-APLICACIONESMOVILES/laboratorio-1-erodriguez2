@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lab1</string>
+    <string name="user_content">Usuario</string>
+    <string name="password_content">Contraseña</string>
+</resources>
