@@ -1,29 +1,37 @@
 package com.example.eduardo.lab1
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.R.id.edit
+import android.content.SharedPreferences
 
-class CredentialsManager(){
-    private var email = ""
-    private var password = ""
-    private lateinit var context: Context
 
-    constructor(newContext: Context) : this() {
-        context = newContext
-    }
+
+class CredentialsManager(context: Context){
+
+    private val PREFERENCES_NAME = "SharedPreferencesFile"
+    private val PREFERENCES_EMAIL_FIELD = "userEmail"
+    private val PREFERENCES_PASSWORD_FIELD = "userPassword"
+    private val DEFAULT_VALUE = ""
+    private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
 
     fun getEmail(): String{
-        return email
+        return preferences.getString(PREFERENCES_EMAIL_FIELD, DEFAULT_VALUE)
     }
 
     fun getPassword(): String{
-        return password
+        return preferences.getString(PREFERENCES_PASSWORD_FIELD, DEFAULT_VALUE)
     }
 
     fun setEmail(newEmail: String){
-        email = newEmail
+        val editor = preferences.edit()
+        editor.putString(PREFERENCES_EMAIL_FIELD, newEmail)
+        editor.apply()
     }
 
     fun setPassword(newPassword: String){
-        password = newPassword
+        val editor = preferences.edit()
+        editor.putString(PREFERENCES_PASSWORD_FIELD, newPassword)
+        editor.apply()
     }
 }

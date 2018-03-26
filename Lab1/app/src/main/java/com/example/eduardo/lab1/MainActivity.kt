@@ -16,7 +16,7 @@ import android.app.Activity
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var initSessionButton: Button
+    private lateinit var signInButton: Button
     private lateinit var userContent: EditText
     private lateinit var userPasswordContent: EditText
 
@@ -28,13 +28,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getUIReferences(){
-        initSessionButton = find(R.id.initSessionButton)
+        signInButton = find(R.id.signInButton)
         userContent = find(R.id.userEmailEditText)
         userPasswordContent = find(R.id.passwordEmailEditText)
     }
 
     private fun setupListeners(){
-        initSessionButton.setOnClickListener {
+        signInButton.setOnClickListener {
             if(isEmailValid(userContent.text.toString())){
                 Toast.makeText(this, "User Format Valid", Toast.LENGTH_SHORT).show()
                 val returnIntent = Intent()
